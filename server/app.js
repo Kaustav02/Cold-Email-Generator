@@ -28,4 +28,4 @@ app.listen(port, () => {
     console.log(`server is working on`,port);
   });
 
-app.use(errormiddlware)
+app.use(errormiddlware) 
