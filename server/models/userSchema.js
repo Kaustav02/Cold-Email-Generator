@@ -22,6 +22,7 @@ const achievementSchema = new mongoose.Schema({
 });
 
 // Main user schema
+
 const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },

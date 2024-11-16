@@ -3,6 +3,7 @@ import {config } from "dotenv"
 
 config()
 
+
 const db_url = process.env.db_url
 
 export const connection = mongoose.connect(db_url,{

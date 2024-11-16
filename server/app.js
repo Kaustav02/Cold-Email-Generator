@@ -2,7 +2,8 @@ import express from 'express'
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import { connection } from "./data/database.js";
-import userRouter from "./routes/user.js";
+import authRouter from "./routes/authRouter.js";
+import userDetails from "./routes/userDetails.js"
 import { errormiddlware } from './middleware/error.js';
 export const app = express();
 
@@ -14,7 +15,8 @@ app.use(cors({
   credentials:true,
 }))
 
-app.use("/api/user",userRouter);
+app.use("/api/auth",authRouter);
+app.use("/api/user",userDetails);
 // app.use("/api/v1/task",taskRouter);
 
 app.get("/", (req, res) => {
