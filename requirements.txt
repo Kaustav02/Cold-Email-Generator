@@ -1,0 +1,5 @@
+selenium
+python-dotenv
+google-generativeai
+Flask
+bs4

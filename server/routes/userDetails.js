@@ -1,10 +1,10 @@
 import express from "express"
-import {updateUserProfile , getUserDetails} from '../controller/updateUser.js'
+import {updateUserProfile , getUserDetailsById} from '../controller/updateUser.js'
 import { isauthenticated } from "../middleware/authentication.js";
 
 const router = express.Router()
 
 router.put("/update-profile", isauthenticated, updateUserProfile);
-router.get("/getUserDetails", isauthenticated, getUserDetails);
+router.get("/getUserDetails/:userId", getUserDetailsById);
 
 export default router

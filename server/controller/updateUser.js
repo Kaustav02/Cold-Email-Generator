@@ -50,24 +50,40 @@ export const updateUserProfile = async (req, res, next) => {
 };
 
 
-export const getUserDetails = async (req, res ,next) => {
+// export const getUserDetails = async (req, res ,next) => {
+//   try {
+//     // Assuming the authenticated user's _id is available in req.user._id
+//     const userId = req.user._id;
+
+//     // Find the user by ID and exclude the password field
+//     const user = await User.findById(userId).select("-_id -email -password");
+
+//     if (!user) {
+//       return next(new errorhandler("No user found" , 401));
+//     }
+
+//     // Return user details
+//     res.status(200).json({
+//       success: true,
+//       data: user,
+//     });
+//   } catch (error) {
+//     next(error)
+//   }
+// };
+
+export const getUserDetailsById = async (req, res, next) => {
   try {
-    // Assuming the authenticated user's _id is available in req.user._id
-    const userId = req.user._id;
-
-    // Find the user by ID and exclude the password field
-    const user = await User.findById(userId).select("-_id -email -password");
-
+    const { userId } = req.params; // Extract userId from the request parameters
+    const user = await User.findById(userId); // Find user by ID
     if (!user) {
-      return next(new errorhandler("No user found" , 401));
+      return next(new errorhandler("User not found", 404));
     }
-
-    // Return user details
     res.status(200).json({
-      success: true,
-      data: user,
+      message: "User details fetched successfully",
+      user,
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
 };

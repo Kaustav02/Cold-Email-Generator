@@ -37,6 +37,8 @@ export const login = async (req, res, next) => {
       if (is_matched) {
         setcookie(users_exist, res, `welcome back ${users_exist.email}`);
         console.log(`login successful ${users_exist.email}`)
+        console.log(users_exist._id)
+        return users_exist._id
       } else {
         return next(new errorhandler("Invalid credentials", 404));
       }
